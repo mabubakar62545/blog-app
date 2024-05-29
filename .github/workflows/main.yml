@@ -11,4 +11,7 @@ jobs:
           ruby-version: 3.1.1
           bundler-cache: false
       - name: Check code
-        run: bundle exec rubocop
+        run: |
+            gem install bundler
+            bundle install
+            bundle exec rubocop
