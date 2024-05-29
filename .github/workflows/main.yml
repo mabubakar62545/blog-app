@@ -3,12 +3,15 @@ on: [push]
 jobs:
   rubocop-test:
     name: Rubocop
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1.1'
+          ruby-version: 3.1.1
           bundler-cache: true
       - name: Check code
-        run: rubocop
+        run: |
+            gem install bundler
+            bundle install
+            bundle exec rubocop
